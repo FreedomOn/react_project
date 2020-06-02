@@ -16,8 +16,14 @@ class Person extends React.Component{
             islogin:true
         }
     }
+    // 验证是否登陆
     // async componentDidMount(){
     //     let result = await checkLogin(),
+    //     islogin = parseFloat(result.code) === 0? true:false;
+    //     this.setState({islogin})
+    // }
+    // componentWillUpdate(){
+        //     let result = await checkLogin(),
     //     islogin = parseFloat(result.code) === 0? true:false;
     //     this.setState({islogin})
     // }
