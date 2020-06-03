@@ -22,14 +22,13 @@ class Person extends React.Component{
     //     islogin = parseFloat(result.code) === 0? true:false;
     //     this.setState({islogin})
     // }
-    // componentWillUpdate(){
-        //     let result = await checkLogin(),
-    //     islogin = parseFloat(result.code) === 0? true:false;
-    //     this.setState({islogin})
-    // }
-    componentWillReceiveProps(){
+    // 验证是否登陆
+    async componentWillReceiveProps(){
         // 更新
         console.log(2)
+            //     let result = await checkLogin(),
+            //     islogin = parseFloat(result.code) === 0? true:false;
+            //     this.setState({islogin})
     }
     render(){
         console.log(1111)

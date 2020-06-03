@@ -5,12 +5,14 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
 
 
-const NormalLoginForm = () => {
+const NormalLoginForm = (props) => {
     const onFinish = values => {
+      console.log(props)
       console.log('Received values of form: ', values);
           let item = true
             if(item){
                 console.log('susccess')
+                props.props.history.push('/person')
                 return
             }
             // 失败的时候弹窗提示
@@ -79,7 +81,7 @@ class Login extends React.Component{
     }
     render(){
         return<div className='personLoginBox'>
-            <NormalLoginForm  />
+            <NormalLoginForm  props={this.props}/>
         </div> 
     }
 }
