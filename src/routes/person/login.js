@@ -3,21 +3,28 @@ import {connect} from 'react-redux'
 import { Form, Input, Modal,Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
-
+import axios from 'axios'
 
 const NormalLoginForm = (props) => {
+    
     const onFinish = values => {
-      console.log(props)
+      // console.log(props)
       console.log('Received values of form: ', values);
-          let item = true
-            if(item){
-                console.log('susccess')
-                props.props.history.push('/person')
-                return
-            }
-            // 失败的时候弹窗提示
-        countDown()
-        };
+      axios.get('login.json').then(({data})=>{
+        console.log(data[0].loginuser[0].name,'data')
+        let user = data[0].loginuser[0].name,
+        psw = data[0].loginuser[0].psw
+        if(values.username === user &&values.password ===psw){ 
+          console.log('susccess')
+          props.props.history.push('/person')
+          localStorage.setItem('login',data[0].code)
+        }else{
+          // 失败的时候弹窗提示
+          countDown()
+        }
+           
+      })      
+    };
     
     return (
       <Form
@@ -88,7 +95,7 @@ class Login extends React.Component{
 function countDown() {
     const modal = Modal.error({
       title: '登陆失败',
-      content: '请稍后重新尝试.',
+      content: '账号密码不对哦',
     });
    
     setTimeout(() => {

@@ -25,13 +25,13 @@ class Person extends React.Component{
     // 验证是否登陆
     async componentWillReceiveProps(){
         // 更新
-        console.log(2)
+        // console.log(2)
             //     let result = await checkLogin(),
             //     islogin = parseFloat(result.code) === 0? true:false;
             //     this.setState({islogin})
     }
     render(){
-        console.log(1111)
+        // console.log(1111)
         return<section>
           <Switch>
               {/* 路由的验证和渲染是同步的，不允许在校验中出现异步，语法不支持这样操作 */}
@@ -42,9 +42,9 @@ class Person extends React.Component{
                   return <Tip></Tip>
               }}> </Route> */}
               <Route path='/person/info' render={()=>{
-                  localStorage.setItem("login", this.state.islogin);
                   let item = localStorage.getItem('login')
-                 if(item === 'false'){
+                  console.log(item,'item')
+                 if(item === "0"){
                     //  基于render返回的组件 不是受路由管控组件
                      return<Info></Info>
                  }
